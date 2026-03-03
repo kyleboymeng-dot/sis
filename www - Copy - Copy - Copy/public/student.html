@@ -1,0 +1,567 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Student Portal</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/student.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css2?family=Abel&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="portal">
+    <!-- Top Navigation Bar -->
+    <div class="topbar-nav">
+      <div class="topbar-logo">
+        🎓 Student Portal
+      </div>
+      <div class="topbar-links">
+        <a class="nav-link active" onclick="switchSection('home'); updateTopNav(this)">Home</a>
+        <a class="nav-link" onclick="switchSection('grades'); updateTopNav(this)">Grades</a>
+        <a class="nav-link" onclick="switchSection('attendance'); updateTopNav(this)">Attendance</a>
+        <a class="nav-link" onclick="switchSection('schedule'); updateTopNav(this)">Schedule</a>
+        <a class="nav-link" onclick="switchSection('subjects'); updateTopNav(this)">Subjects</a>
+      </div>
+      <div class="drawer-toggle-wrapper">
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+          <span class="drawer-icon">☰</span>
+        </button>
+        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar">
+          <div class="offcanvas-body">
+            <nav class="sidebar-nav flex-column">
+              <a class="nav-link" onclick="switchSection('home'); updateTopNav(this); closeDrawer()" data-bs-dismiss="offcanvas">
+                <span class="icon-wrapper"><img src="../assets/icons/dashboard.png" class="icon"></span>
+                <span>Home</span>
+              </a>
+              <a class="nav-link" onclick="switchSection('grades'); updateTopNav(this); closeDrawer()" data-bs-dismiss="offcanvas">
+                <span class="icon-wrapper"><img src="../assets/icons/reading.png" class="icon"></span>
+                <span>Grades</span>
+              </a>
+              <a class="nav-link" onclick="switchSection('attendance'); updateTopNav(this); closeDrawer()" data-bs-dismiss="offcanvas">
+                <span class="icon-wrapper"><img src="../assets/icons/user-check.png" class="icon"></span>
+                <span>Attendance</span>
+              </a>
+              <a class="nav-link" onclick="switchSection('schedule'); updateTopNav(this); closeDrawer()" data-bs-dismiss="offcanvas">
+                <span class="icon-wrapper"><img src="../assets/icons/schedule.png" class="icon"></span>
+                <span>Schedule</span>
+              </a>
+              <a class="nav-link" onclick="switchSection('subjects'); updateTopNav(this); closeDrawer()" data-bs-dismiss="offcanvas">
+                <span class="icon-wrapper"><img src="../assets/icons/reading.png" class="icon"></span>
+                <span>Subjects</span>
+              </a>
+              <a href="login.html">
+                <span class="icon-wrapper"><img src="../assets/icons/logout.png" class="icon"></span>
+                <span>Logout</span>
+              </a>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <main class="main-container">
+      <div class="content-wrapper">
+        <!-- HOME SECTION -->
+        <div id="home" class="section active">
+          <div class="page-title">Welcome Back, John Doe!</div>
+          <p class="page-subtitle">Here's an overview of your academic progress</p>
+
+          <div class="stat-cards-container">
+            <div class="stat-card">
+              <div class="stat-card-content">
+                <div class="stat-label">Current GWA</div>
+                <div class="stat-value">1.75</div>
+                <div class="stat-sub">📈 Excellent Performance</div>
+              </div>
+              <div class="stat-icon">📊</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-card-content">
+                <div class="stat-label">Enrolled Subjects</div>
+                <div class="stat-value">8</div>
+                <div class="stat-sub">Current Semester</div>
+              </div>
+              <div class="stat-icon">📚</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-card-content">
+                <div class="stat-label">Overall Attendance</div>
+                <div class="stat-value">94.5%</div>
+                <div class="stat-sub">Present in 189/200 classes</div>
+              </div>
+              <div class="stat-icon">📅</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-card-content">
+                <div class="stat-label">Academic Status</div>
+                <div class="stat-value" style="color: #22c55e;">Active</div>
+                <div class="stat-sub">Good Standing</div>
+              </div>
+              <div class="stat-icon">✅</div>
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
+            <div>
+              <div class="section-title">Today's Schedule</div>
+              <div class="table-wrapper">
+                <table>
+                  <tbody>
+                    <tr>
+                      <td style="padding: 16px;">
+                        <div style="color: #666; font-size: 12px; margin-bottom: 4px;">07:30 - 09:00</div>
+                        <div style="font-weight: 600; color: #1F2A44; margin-bottom: 4px;">Data Structures</div>
+                        <div style="color: #666; font-size: 12px;">Prof. Sarah Johnson</div>
+                        <div style="color: #666; font-size: 12px;">Room 301</div>
+                      </td>
+                    </tr>
+                    <tr style="background: #f0f9ff;">
+                      <td style="padding: 16px;">
+                        <div style="color: #666; font-size: 12px; margin-bottom: 4px;">09:00 - 10:30</div>
+                        <div style="font-weight: 600; color: #1F2A44; margin-bottom: 4px;">Web Development</div>
+                        <div style="color: #666; font-size: 12px;">Prof. Michael Chen</div>
+                        <div style="color: #666; font-size: 12px;">Room 205</div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="padding: 16px;">
+                        <div style="color: #666; font-size: 12px; margin-bottom: 4px;">09:00 - 11:00</div>
+                        <div style="font-weight: 600; color: #1F2A44; margin-bottom: 4px;">Database Systems</div>
+                        <div style="color: #666; font-size: 12px;">Prof. Emily Davis</div>
+                        <div style="color: #666; font-size: 12px;">Room 402</div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div>
+              <div class="section-title">Recent Grades</div>
+              <div class="table-wrapper">
+                <table>
+                  <tbody>
+                    <tr>
+                      <td style="padding: 16px;">
+                        <div style="font-weight: 600; color: #1F2A44;">Data Structures</div>
+                        <div style="color: #666; font-size: 12px;">Midterm Exam</div>
+                      </td>
+                      <td style="text-align: right; color: #22c55e; font-weight: 700;">1.5</td>
+                      <td style="text-align: right;"><span class="status-badge status-excellent">Excellent</span></td>
+                    </tr>
+                    <tr style="background: #f5f5f5;">
+                      <td style="padding: 16px;">
+                        <div style="font-weight: 600; color: #1F2A44;">Web Development</div>
+                        <div style="color: #666; font-size: 12px;">Project Submission</div>
+                      </td>
+                      <td style="text-align: right; color: #22c55e; font-weight: 700;">1.75</td>
+                      <td style="text-align: right;"><span class="status-badge status-good">Very Good</span></td>
+                    </tr>
+                    <tr>
+                      <td style="padding: 16px;">
+                        <div style="font-weight: 600; color: #1F2A44;">Database Systems</div>
+                        <div style="color: #666; font-size: 12px;">Written Work 3</div>
+                      </td>
+                      <td style="text-align: right; color: #22c55e; font-weight: 700;">2.0</td>
+                      <td style="text-align: right;"><span class="status-badge status-good">Good</span></td>
+                    </tr>
+                    <tr style="background: #f5f5f5;">
+                      <td style="padding: 16px;">
+                        <div style="font-weight: 600; color: #1F2A44;">Computer Networks</div>
+                        <div style="color: #666; font-size: 12px;">Performance Task 2</div>
+                      </td>
+                      <td style="text-align: right; color: #22c55e; font-weight: 700;">1.5</td>
+                      <td style="text-align: right;"><span class="status-badge status-excellent">Excellent</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- GRADES SECTION -->
+        <div id="grades" class="section">
+          <div class="page-title">Grades</div>
+          <p class="page-subtitle">View your academic performance and grades</p>
+
+          <div class="selector-group">
+            <label class="selector-label">Select Academic Session:</label>
+            <select class="selector-dropdown" id="gradesSemester">
+              <option>2025-2026 Semester 1</option>
+              <option selected>2025-2026 Semester 2</option>
+              <option>2024-2025 Semester 1</option>
+              <option>2024-2025 Semester 2</option>
+            </select>
+          </div>
+
+          <div style="margin-bottom: 40px;">
+            <div class="overall-attendance">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+              <div>
+                <div class="section-title" style="margin: 0;">Academic Records</div>
+              </div>
+              <div class="overall=label" style="color: #666; font-size: 14px; font-weight: 600;">Overall GWA</div>
+            </div>
+
+            <div class="table-wrapper">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Subject</th>
+                    <th>Written Works</th>
+                    <th>Performance Tasks</th>
+                    <th>Exam</th>
+                    <th>Overall Grade (GWA)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><a href="#" style="color: #1F2A44; text-decoration: underline;">Data Structures and Algorithms</a></td>
+                    <td>1.75</td>
+                    <td>1.50</td>
+                    <td>1.75</td>
+                    <td><span class="grade-value">1.67</span></td>
+                  </tr>
+                  <tr>
+                    <td><a href="#" style="color: #1F2A44; text-decoration: underline;">Web Development Fundamentals</a></td>
+                    <td>1.50</td>
+                    <td>1.75</td>
+                    <td>2.00</td>
+                    <td><span class="grade-value">1.75</span></td>
+                  </tr>
+                  <tr>
+                    <td><a href="#" style="color: #1F2A44; text-decoration: underline;">Database Management Systems</a></td>
+                    <td>2.00</td>
+                    <td>1.75</td>
+                    <td>1.75</td>
+                    <td><span class="grade-value">1.83</span></td>
+                  </tr>
+                  <tr>
+                    <td><a href="#" style="color: #1F2A44; text-decoration: underline;">Computer Networks</a></td>
+                    <td>1.50</td>
+                    <td>1.50</td>
+                    <td>1.75</td>
+                    <td><span class="grade-value">1.58</span></td>
+                  </tr>
+                  <tr>
+                    <td><a href="#" style="color: #1F2A44; text-decoration: underline;">Operating Systems</a></td>
+                    <td>1.75</td>
+                    <td>2.00</td>
+                    <td>1.50</td>
+                    <td><span class="grade-value">1.75</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            </div>
+
+            <div style="padding: 20px 30px; text-align: right; color: #666; font-size: 12px; float: left;">
+              Showing 1-5 of 12 subjects
+            </div>
+
+            <div class="pagination">
+              <button>⬅ Previous</button>
+              <button class="active">1</button>
+              <button>2</button>
+              <button>3</button>
+              <button>Next ➡</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- ATTENDANCE SECTION -->
+        <div id="attendance" class="section">
+          <div class="page-title">Attendance</div>
+          <p class="page-subtitle">Track your class attendance records</p>
+
+          <div class="selector-group">
+            <label class="selector-label">Select Academic Session:</label>
+            <select class="selector-dropdown" id="attendanceSemester">
+              <option selected>2025-2026 Semester 1</option>
+              <option>2025-2026 Semester 2</option>
+              <option>2024-2025 Semester 1</option>
+              <option>2024-2025 Semester 2</option>
+            </select>
+          </div>
+
+          <div style="position: relative; margin-bottom: 40px;">
+            <div class="overall-attendance">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+              <div>
+                <div class="section-title" style="margin: 0;">Academic Records</div>
+              </div>
+              <div class="overall=label" style="color: #666; font-size: 14px; font-weight: 600;">Overall Attendance: 80%</div>
+            </div>
+            <div class="table-wrapper">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Subject</th>
+                    <th>Total Classes</th>
+                    <th>Total Present</th>
+                    <th>Attendance %</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Data Structures and Algorithms</td>
+                    <td>28</td>
+                    <td>27</td>
+                    <td>96.4%</td>
+                    <td><span class="status-badge status-excellent">Excellent</span></td>
+                  </tr>
+                  <tr>
+                    <td>Web Development Fundamentals</td>
+                    <td>25</td>
+                    <td>24</td>
+                    <td><span style="color: white; padding: 4px 8px; border-radius: 4px;">96%</span></td>
+                    <td><span class="status-badge status-excellent">Excellent</span></td>
+                  </tr>
+                  <tr>
+                    <td>Database Management Systems</td>
+                    <td>26</td>
+                    <td>25</td>
+                    <td>96.2%</td>
+                    <td><span class="status-badge status-excellent">Excellent</span></td>
+                  </tr>
+                  <tr>
+                    <td>Computer Networks</td>
+                    <td>24</td>
+                    <td>23</td>
+                    <td>95.8%</td>
+                    <td><span class="status-badge status-excellent">Excellent</span></td>
+                  </tr>
+                  <tr>
+                    <td>Operating Systems</td>
+                    <td>27</td>
+                    <td>25</td>
+                    <td>92.6%</td>
+                    <td><span class="status-badge status-very-good">Very Good</span></td>
+                  </tr>
+                  <tr>
+                    <td>Software Engineering</td>
+                    <td>25</td>
+                    <td>24</td>
+                    <td>96%</td>
+                    <td><span class="status-badge status-excellent">Excellent</span></td>
+                  </tr>
+                  <tr>
+                    <td>Computer Architecture</td>
+                    <td>23</td>
+                    <td>20</td>
+                    <td>87%</td>
+                    <td><span class="status-badge status-good">Good</span></td>
+                  </tr>
+                  <tr>
+                    <td>Theory of Computation</td>
+                    <td>22</td>
+                    <td>21</td>
+                    <td>95.5%</td>
+                    <td><span class="status-badge status-excellent">Excellent</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="attendance-summary">
+              <div class="summary-card">
+                <div class="summary-label">Total Classes</div>
+                <div class="summary-value">200</div>
+              </div>
+              <div class="summary-card">
+                <div class="summary-label">Total Present</div>
+                <div class="summary-value" style="color: #22c55e;">189</div>
+              </div>
+              <div class="summary-card">
+                <div class="summary-label">Total Absent</div>
+                <div class="summary-value" style="color: #ef4444;">11</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SCHEDULE SECTION -->
+        <div id="schedule" class="section">
+          <div class="page-title">Class Schedule</div>
+          <p class="page-subtitle">View your weekly class schedule</p>
+
+          <div class="schedule-grid">
+            <table class="schedule-table">
+              <thead>
+                <tr>
+                  <th>Time Slot</th>
+                  <th>Mon<br><span style="font-size: 10px; font-weight: 400;">[02/03/26]</span></th>
+                  <th>Tue<br><span style="font-size: 10px; font-weight: 400;">[02/04/26]</span></th>
+                  <th>Wed<br><span style="font-size: 10px; font-weight: 400;">[02/05/26]</span></th>
+                  <th>Thu<br><span style="font-size: 10px; font-weight: 400;">[02/06/26]</span></th>
+                  <th>Fri<br><span style="font-size: 10px; font-weight: 400;">[02/07/26]</span></th>
+                  <th>Sat<br><span style="font-size: 10px; font-weight: 400;">[02/08/26]</span></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><div class="time-slot">07:30<br>09:00</div></td>
+                  <td><div class="class-card"><div class="class-name">Data Structures</div><div class="class-teacher">Prof. Sarah Johnson</div><div class="class-room">Room 301</div></div></td>
+                  <td><div class="class-card"><div class="class-name">Web Development</div><div class="class-teacher">Prof. Michael Chen</div><div class="class-room">Room 205</div></div></td>
+                  <td><div class="class-card"><div class="class-name">Data Structures</div><div class="class-teacher">Prof. Sarah Johnson</div><div class="class-room">Room 301</div></div></td>
+                  <td><div class="class-card"><div class="class-name">Database Systems</div><div class="class-teacher">Prof. Emily Davis</div><div class="class-room">Room 402</div></div></td>
+                  <td><div class="class-card"><div class="class-name">Computer Networks</div><div class="class-teacher">Prof. Robert Brown</div><div class="class-room">Room 103</div></div></td>
+                  <td>—</td>
+                </tr>
+                <tr>
+                  <td><div class="time-slot">09:00<br>10:30</div></td>
+                  <td><div class="class-card"><div class="class-name">Operating Systems</div><div class="class-teacher">Prof. David Wilson</div><div class="class-room">Room 215</div></div></td>
+                  <td><div class="class-card"><div class="class-name">Software Engineering</div><div class="class-teacher">Prof. Jennifer Lee</div><div class="class-room">Room 308</div></div></td>
+                  <td><div class="class-card"><div class="class-name">Web Development</div><div class="class-teacher">Prof. Michael Chen</div><div class="class-room">Room 205</div></div></td>
+                  <td><div class="class-card"><div class="class-name">Operating Systems</div><div class="class-teacher">Prof. David Wilson</div><div class="class-room">Room 215</div></div></td>
+                  <td><div class="class-card"><div class="class-name">Software Engineering</div><div class="class-teacher">Prof. Jennifer Lee</div><div class="class-room">Room 308</div></div></td>
+                  <td>—</td>
+                </tr>
+                <tr>
+                  <td><div class="time-slot">09:00<br>11:00</div></td>
+                  <td>—</td>
+                  <td>—</td>
+                  <td><div class="class-card"><div class="class-name">Computer Architecture</div><div class="class-teacher">Prof. Thomas Anderson</div><div class="class-room">Room 410</div></div></td>
+                  <td>—</td>
+                  <td><div class="class-card"><div class="class-name">Theory of Computation</div><div class="class-teacher">Prof. Lisa Martinez</div><div class="class-room">Room 312</div></div></td>
+                  <td>—</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- SUBJECTS SECTION -->
+        <div id="subjects" class="section">
+          <div class="page-title">Enrolled Subjects</div>
+          <p class="page-subtitle">View all your enrolled subjects and instructors</p>
+
+          <div style="background: #fff; padding: 20px 30px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); margin-bottom: 30px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+              <div>
+                <div class="section-title" style="margin: 0;">Current Semester Subjects</div>
+              </div>
+              <div style="color: #666; font-size: 14px; font-weight: 600;">8 Subjects</div>
+            </div>
+
+            <div class="table-wrapper">
+              <table>
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Subject Name</th>
+                    <th>School Year</th>
+                    <th>Section</th>
+                    <th>Teacher Name</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>1</td>
+                    <td><a href="#" style="color: #1F2A44; text-decoration: none; font-weight: 500;">Data Structures and Algorithms</a></td>
+                    <td>2025-2026</td>
+                    <td>CS-3A</td>
+                    <td>Prof. Sarah Johnson</td>
+                  </tr>
+                  <tr>
+                    <td>2</td>
+                    <td><a href="#" style="color: #1F2A44; text-decoration: none; font-weight: 500;">Web Development Fundamentals</a></td>
+                    <td>2025-2026</td>
+                    <td>CS-3A</td>
+                    <td>Prof. Michael Chen</td>
+                  </tr>
+                  <tr>
+                    <td>3</td>
+                    <td><a href="#" style="color: #1F2A44; text-decoration: none; font-weight: 500;">Database Management Systems</a></td>
+                    <td>2025-2026</td>
+                    <td>CS-3A</td>
+                    <td>Prof. Emily Davis</td>
+                  </tr>
+                  <tr>
+                    <td>4</td>
+                    <td><a href="#" style="color: #1F2A44; text-decoration: none; font-weight: 500;">Computer Networks</a></td>
+                    <td>2025-2026</td>
+                    <td>CS-3A</td>
+                    <td>Prof. Robert Brown</td>
+                  </tr>
+                  <tr>
+                    <td>5</td>
+                    <td><a href="#" style="color: #1F2A44; text-decoration: none; font-weight: 500;">Operating Systems</a></td>
+                    <td>2025-2026</td>
+                    <td>CS-3A</td>
+                    <td>Prof. David Wilson</td>
+                  </tr>
+                  <tr>
+                    <td>6</td>
+                    <td><a href="#" style="color: #1F2A44; text-decoration: none; font-weight: 500;">Software Engineering</a></td>
+                    <td>2025-2026</td>
+                    <td>CS-3A</td>
+                    <td>Prof. Jennifer Lee</td>
+                  </tr>
+                  <tr>
+                    <td>7</td>
+                    <td><a href="#" style="color: #1F2A44; text-decoration: none; font-weight: 500;">Computer Architecture</a></td>
+                    <td>2025-2026</td>
+                    <td>CS-3A</td>
+                    <td>Prof. Thomas Anderson</td>
+                  </tr>
+                  <tr>
+                    <td>8</td>
+                    <td><a href="#" style="color: #1F2A44; text-decoration: none; font-weight: 500;">Theory of Computation</a></td>
+                    <td>2025-2026</td>
+                    <td>CS-3A</td>
+                    <td>Prof. Lisa Martinez</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div style="padding: 20px 0; display: flex; justify-content: space-between; align-items: center;">
+              <div style="font-size: 12px; color: #666;">
+                Total Enrolled Subjects: <span style="font-weight: 600;">8</span>
+                <span style="margin-left: 30px;">Section: <span style="font-weight: 600; color: #1F2A44;">CS-3A</span></span>
+                <span style="margin-left: 30px;">Academic Year: <span style="font-weight: 600; color: #1F2A44;">2025-2026</span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    function switchSection(sectionId) {
+      // Hide all sections
+      document.querySelectorAll('.section').forEach(section => {
+        section.classList.remove('active');
+      });
+      // Show the selected section
+      document.getElementById(sectionId).classList.add('active');
+    }
+
+    function updateTopNav(element) {
+      document.querySelectorAll('.topbar-links a').forEach(link => {
+        link.classList.remove('active');
+      });
+      element.classList.add('active');
+    }
+
+    function closeDrawer() {
+      const drawer = document.getElementById('offcanvasNavbar');
+      const bsOffCanvas = new bootstrap.Offcanvas(drawer);
+      bsOffCanvas.hide();
+    }
+
+    // Set initial active state
+    document.querySelectorAll('.topbar-links a')[0].classList.add('active');
+  </script>
+
+  <script src="../js/session.js"></script>
+  <script src="../js/nav.js"></script>
+  <script src="../js/search.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</body>
+</html>

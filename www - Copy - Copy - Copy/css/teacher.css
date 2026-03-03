@@ -1,0 +1,1583 @@
+#academicSessionSelect {
+  width: auto;
+  font-size: .825rem;
+  padding: 8px 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+}
+
+#openAddGradeBtnStudents {
+  width: auto; 
+  float: right;
+}
+
+#studentsTbody {
+  font-size: 0.825rem;
+}
+
+.schedule-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+}
+
+.schedule-table th {
+  background: #f5f6fa;
+  padding: 7px;
+  font-weight: 600;
+}
+
+.schedule-table td {
+  padding: 8px;
+  border: 1px solid #ddd;
+}
+
+.card table th {
+  background: #FFFFFF;
+  padding: 7px;
+}
+
+/* Quick actions on dashboard */
+.quick-actions{
+  display:flex;
+  gap:14px;
+}
+.action-card .action-icon{
+  width:48px;
+  height:48px;
+  border-radius:8px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:16px
+}
+.action-card .action-body .action-title{
+  font-weight:700;
+  color:#0f2d57
+}
+.action-card .action-body .action-sub{
+  font-size:0.75rem;
+  color:#666
+}
+.action-card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 18px 38px rgba(15,45,78,0.12)
+}
+.action-card:active{
+  transform:translateY(-2px) scale(0.997)
+}
+.action-card:focus{
+  outline:none
+}
+.action-card:focus-visible{
+  box-shadow:0 18px 38px rgba(15,45,78,0.12);
+  border-color:rgba(15,45,78,0.08)
+}
+
+/* Colored icon backgrounds */
+.action-icon.blue{
+  background:rgba(42,68,116,0.08);
+  color:var(--accent-strong)
+}
+.action-icon.green{
+  background:rgba(34,197,94,0.08);
+  color:var(--green)
+}
+y
+/* Modal Overlay */
+.modal {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(15, 45, 78, 0.35);
+  z-index: 120;
+  /* This ensures the modal is centered and visible by default */
+  visibility: visible; 
+  opacity: 1;
+  transition: opacity 180ms ease;
+}
+
+/* Hidden State */
+.modal.hidden {
+  display: none;
+  /* Or use visibility/opacity for fade out effects */
+}
+
+/* Modal Dialog Box */
+.modal-dialog {
+  background: #fff;
+  border-radius: 12px;
+  padding: 24px;
+  width: 420px;
+  max-width: 100%;
+  max-height: 90vh;
+  overflow: auto;
+  box-shadow: 0 24px 60px rgba(15, 45, 78, 0.2);
+  
+  /* Initial state for animation (Invisible) */
+  transform: translateY(6px) scale(0.98);
+  opacity: 0;
+  transition: transform 180ms cubic-bezier(.2, .9, .2, 1), opacity 180ms ease;
+}
+
+/* Active State (Visible) - THE FIX */
+.modal:not(.hidden) .modal-dialog {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
+
+.modal-dialog h3 {
+  margin: 0 0 16px 0;
+  color: #0f2d4e;
+}
+
+.card table td {
+  padding: 6px;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Timetable / Schedule styles */
+.schedule-header { 
+  align-items:center; 
+  justify-content:space-between; 
+  gap:12px; 
+  margin-bottom:18px; 
+}
+.schedule-header h2 { 
+  margin:0; 
+  font-size:1rem; 
+  color:#0f2d57; 
+}
+.btn-add { 
+  background:#1F6FEB; 
+  color:#fff; 
+  border:none; 
+  padding:10px 14px; 
+  border-radius:10px; 
+  cursor:pointer; 
+  font-weight:600; 
+}
+.btn-add:hover { 
+  background:#145ed6; 
+}
+
+.timetable { 
+  background: #fff; 
+  padding: 12px; 
+  border-radius: 12px; 
+  box-shadow: 0 8px 20px rgba(15,45,78,0.04); 
+  border: 1px solid rgba(15,45,78,0.03); 
+}
+.timetable-grid { 
+  display: grid; 
+  grid-template-columns: 110px repeat(7, 1fr); 
+  gap: 16px; 
+  align-items: start;
+}
+.timetable-head { 
+  font-weight:500;
+  font-size: .8rem;
+  color:#22385F; 
+  text-align:left; 
+}
+.time-head { 
+  text-align:center; 
+}
+.time-cell { 
+  padding: 12px 8px; 
+  text-align:center; 
+  color:#374151; 
+  font-weight:600; 
+}
+
+.class-card { 
+  background: #eef6ff; 
+  border-radius: 8px; 
+  display:flex; 
+  gap:12px; 
+  align-items:flex-start; 
+  padding:10px; 
+  position:relative; 
+  overflow:hidden; 
+}
+.class-accent { 
+  width:6px; 
+  background:#2A74E6; 
+  border-radius:4px; 
+  margin-left:-6px; 
+}
+.class-body { 
+  padding:4px 6px; 
+}
+.class-title { 
+  font-weight:700; 
+  color:#0f2d57; 
+  margin-bottom:4px; 
+}
+.class-sub { 
+  color:#6b7280; 
+  margin-bottom:8px; 
+}
+.class-meta { 
+  font-size:0.75rem; 
+  color:#6b7280; 
+  margin-bottom:4px; 
+}
+/* Dashboard layout (quick actions, stats) */
+.action-card { 
+  display:flex; 
+  gap:14px; 
+  align-items:center; 
+  background:#fff; 
+  padding:16px; 
+  border-radius:12px; 
+  flex:1; box-shadow:0 6px 18px rgba(15,45,78,0.04); 
+  border:1px solid rgba(15,45,78,0.03); 
+  transition:transform 180ms ease,box-shadow 180ms ease,opacity 120ms
+}
+.action-icon { 
+  width:52px; 
+  height:52px; 
+  border-radius:10px; 
+  display:flex; 
+  align-items:center; 
+  justify-content:center; 
+  font-size:20px; 
+  color:#fff; 
+  flex-shrink:0; 
+}
+.day-cell { 
+  min-height: 50px; 
+  padding: 12px;
+  background: transparent; /* keep empty slots visually blank until populated */
+}
+
+.action-icon.purple {
+  background:#f3e9ff; 
+  color:#8B5CF6; 
+}
+.action-body .action-title { 
+  font-weight:700; 
+  color:#0f2d57; 
+}
+.action-body .action-sub { 
+  color:#6b7280; 
+  margin-top:6px; 
+}
+
+.stats-cards { 
+  display: grid;
+  gap:14px;
+}
+
+.stat-icon.blue { 
+  background:#1F6FEB; 
+}
+.stat-icon.green { 
+  background:#06C167; 
+}
+.stat-icon.purple { 
+  background:#A855F7; 
+}
+
+/* ============================================
+   RESPONSIVE STYLES FOR STAT CARDS
+   ============================================ */
+
+@media (max-width: 1024px) {
+  .stats-cards {
+    gap: 14px;
+  }
+
+  .stat-card {
+    padding: 16px;
+  }
+
+  .stat-label {
+    font-size: 0.85rem;
+  }
+
+  .stat-value {
+    font-size: 0.8rem;
+    margin-top: 4px;
+  }
+
+  .stat-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 768px) {
+  .stats-cards {
+    gap: 12px;
+  }
+
+  .stat-card {
+    padding: 14px;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .stat-label {
+    font-size: 0.8rem;
+    order: 1;
+  }
+
+  .stat-value {
+    font-size: 0.75rem;
+    margin-top: 2px;
+    order: 2;
+  }
+
+  .stat-icon {
+    width: 36px;
+    height: 36px;
+    font-size: 16px;
+    order: 3;
+    align-self: flex-end;
+  }
+
+  #academicSessionSelect {
+    font-size: .775rem;
+  }
+
+  #studentsTbody {
+    font-size: 0.775rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .stats-cards {
+    gap: 10px;
+  }
+
+  .stat-card {
+    padding: 14px;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .stat-card > div:first-child {
+    flex: 1;
+  }
+
+  .stat-label {
+    font-size: 0.75rem;
+  }
+
+  .stat-value {
+    font-size: 0.7rem;
+    margin-top: 2px;
+  }
+
+  .stat-icon {
+    width: 34px;
+    height: 34px;
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .stats-cards {
+    gap: 8px;
+  }
+
+  .quick-actions {
+    display:grid;
+  }
+
+  .stat-card {
+    gap: 6px;
+    border-radius: 8px;
+  }
+
+
+  .stat-label {
+    font-size: 0.7rem;
+    color: #6b7280;
+  }
+
+  .stat-value {
+    font-size: 0.65rem;
+    font-weight: 700;
+    margin-top: 0;
+  }
+
+  .stat-icon {
+    display: none;
+  }
+
+  #academicSessionSelect {
+    width: 100%;
+    font-size: .725rem;
+  }
+
+  #openAddGradeBtnStudents {
+    width: 100%;
+    float: left;
+    margin-top: 10px;
+  }
+
+  #studentsTbody {
+    font-size: 0.725rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .stats-cards {
+    gap: 6px;
+  }
+
+  .stat-card {
+    padding: 8px;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    border-radius: 8px;
+  }
+
+  .stat-label {
+    font-size: 0.65rem;
+  }
+
+  .stat-value {
+    font-size: 0.6rem;
+  }
+
+  .stat-icon {
+    width: 30px;
+    height: 30px;
+    font-size: 10px;
+    min-width: 30px;
+  }
+
+  #academicSessionSelect {
+    font-size: .675rem;
+  }
+
+  #studentsTbody {
+    font-size: 0.675rem;
+  }
+}
+
+
+/* Sections */
+.section { display: none; }
+.section.active { display: flex; flex-direction: column; gap: 12px; width: 100%; }
+#schedule.section.active { display: flex; flex-direction: column; gap: 12px; }
+
+
+/* Color the previous button arrow to match topbar accent */
+#cal-prev {
+  color: #0f2d57;
+  border-color: rgba(15,45,78,0.08);
+  background: transparent;
+}
+#cal-prev:hover {
+  background: rgba(15,45,78,0.04);
+}
+
+/* Style the next button similarly */
+#cal-next {
+  color: #0f2d57;
+  border-color: rgba(15,45,78,0.08);
+  background: transparent;
+}
+#cal-next:hover {
+  background: rgba(15,45,78,0.04);
+}
+
+@media (max-width: 800px) {
+  .portal { 
+    flex-direction: column; 
+  }
+  .sidebar { 
+    width: 100%; 
+    display:flex; 
+    gap:8px; 
+    overflow:auto 
+  }
+  .main { 
+    padding: 12px; 
+  }
+
+  .grid { 
+    grid-template-columns: repeat(2,1fr); }
+  .topbar h1 { 
+    font-size:1.1rem
+  }
+}
+
+.container{
+  max-width:1100px;
+  margin:28px auto;padding:20px
+}
+
+/* allow grid to overflow so horizontal scrolling works on small screens */
+.timetable-grid { 
+  min-width: 100%;
+}
+.timetable {
+  overflow-x: auto;
+}
+.top h1{
+  margin:0;font-size:22px
+}
+.timetable-scroll { overflow-x: auto; scroll-behavior: smooth; padding-bottom: 8px; }
+.timetable-nav { position: absolute; right: 8px; bottom: 8px; display:flex; gap:8px; z-index:40 }
+.timetable-nav button { background:#fff;border:1px solid rgba(15,45,78,0.08);padding:6px 8px;border-radius:6px;cursor:pointer;box-shadow:0 6px 18px rgba(15,45,78,0.06) }
+.timetable-nav button:hover{ 
+  background:#f3f6fb 
+}
+
+@media (max-width: 768px) {
+  .class-card {
+    padding: 8px;
+    gap: 8px;
+  }
+
+  .class-title {
+    font-size: 0.85rem;
+  }
+
+  .class-sub,
+  .class-meta {
+    font-size: 0.7rem;
+  }
+
+}
+
+@media (max-width: 480px) {
+  .schedule-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .schedule-header h2 {
+    font-size: 1rem;
+  }
+
+
+  .class-card {
+    padding: 6px;
+    gap: 6px;
+  }
+
+  .class-accent {
+    width: 4px;
+  }
+
+  .class-body {
+    padding: 2px 4px;
+  }
+
+  .class-title {
+    font-size: 0.75rem;
+    margin-bottom: 2px;
+  }
+
+  .class-sub {
+    font-size: 0.65rem;
+    margin-bottom: 4px;
+  }
+
+  .class-meta {
+    font-size: 0.6rem;
+  }
+}
+
+.modes {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.mode {
+  padding: 8px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(15, 45, 78, 0.04);
+  background: #f3f6f9;
+  cursor: pointer;
+  color: var(--accent-strong);
+  flex: 1;
+  min-width: 80px;
+  text-align: center;
+}
+
+.mode.active {
+  background: var(--accent);
+  color: #fff;
+}
+
+.card {
+  background: var(--card);
+  padding: 14px 18px;
+  border-radius: 12px !important;
+  flex: 1;
+  border: 1px solid #eee !important;
+  min-width: 200px;
+}
+
+.card small {
+  display: block;
+  color: var(--muted);
+  margin-bottom: 5px;
+  font-size: 0.75rem;
+}
+
+
+.card h5 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1F2A44;
+  margin: 0 0 16px 0;
+}
+
+.card #todayScheduleContent p {
+  color: #7a8899;
+  font-size: 0.95rem;
+  margin: 0;
+  text-align: center;
+}
+
+.card a {
+  color: #526EEA !important;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: none !important;
+  font-size: 0.85rem;
+}
+
+.cardStudent {
+  flex: 1;
+  min-width: 150px;
+}
+/* ============================================
+   SHARED TABLE STYLES - Used across modules
+   ============================================ */
+
+.studentTable {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 600px;
+}
+
+.studentTable thead th {
+  text-align: left;
+  padding: 6px 8px;
+  border-bottom: 1px solid #f0f2f5;
+  color: var(--muted);
+  white-space: nowrap;
+  font-size: .875rem;
+}
+
+.studentTable tbody td {
+  padding: 8px 10px;
+  border-bottom: 1px solid #f6f7f9;
+  vertical-align: middle;
+  font-size: 0.825rem;
+}
+
+.studentRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.studentName {
+  font-weight: 600;
+}
+
+.smallMuted {
+  display: block;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.statusBtns {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.pill {
+  padding: 8px 12px;
+  border-radius: 12px;
+  border: 1px solid #e6e9ee;
+  background: #fafafa;
+  cursor: pointer;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.pill.present {
+  border-color: var(--green);
+  color: var(--green);
+  background: rgba(34, 197, 94, 0.06);
+}
+
+.pill.absent {
+  border-color: var(--red);
+  color: var(--red);
+  background: rgba(239, 68, 68, 0.06);
+}
+
+.pill.late {
+  border-color: #d1d5db;
+  color: #374151;
+  background: #f8fafc;
+}
+
+.pill.active {
+  box-shadow: inset 0 0 0 2px rgba(0, 0, 0, 0.03);
+}
+
+@media (max-width: 800px) {
+
+  .viewMode {
+    margin-right: 0;
+  }
+}
+
+/* ============================================
+   COMPREHENSIVE TEXT RESPONSIVE STYLES
+   ============================================ */
+
+@media (max-width: 1440px) {
+  /* Headings */
+  h1 {
+    font-size: 2rem;
+  }
+  h2 {
+    font-size: 1.6rem;
+  }
+  h3 {
+    font-size: 1.3rem;
+  }
+  h4 {
+    font-size: 1.2rem !important;
+  }
+  h5 {
+    font-size: 1rem;
+  }
+  h6 {
+    font-size: 0.95rem;
+  }
+
+  /* Body text */
+  body {
+    font-size: 15px;
+    line-height: 1.5;
+  }
+
+  p {
+    font-size: 15px;
+  }
+
+  .muted {
+    font-size: 0.85rem;
+  }
+
+  span, label {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  h1 {
+    font-size: 1.8rem;
+  }
+  h2 {
+    font-size: 1.4rem;
+  }
+  h3 {
+    font-size: 1.2rem;
+  }
+  h4 {
+    font-size: 1rem;
+  }
+  h5 {
+    font-size: 0.95rem;
+  }
+  h6 {
+    font-size: 0.9rem;
+  }
+
+  body {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  p {
+    font-size: 14px;
+  }
+
+  .muted {
+    font-size: 0.8rem;
+  }
+
+  span, label {
+    font-size: 0.85rem;
+  }
+
+  .topbar-inner h1 {
+    font-size: 0.9rem;
+  }
+
+  .sidebar a {
+    font-size: 0.95rem;
+  }
+
+  .card small {
+    font-size: 0.725rem;
+  }
+
+  .card strong {
+    font-size: .85rem;
+  }
+
+  .studentTable thead th {
+    font-size: 0.825rem;
+  }
+
+  .studentTable tbody td {
+    font-size: 0.8rem;
+  }
+
+
+  .studentName {
+    font-size: 0.95rem;
+  }
+
+  .smallMuted {
+    font-size: 0.75rem;
+  }
+
+  .action-body h4 {
+    font-size: 1rem;
+  }
+
+  .action-body p {
+    font-size: 0.8rem;
+  }
+
+  .class-title {
+    font-size: 0.9rem;
+  }
+
+  .class-sub {
+    font-size: 0.75rem;
+  }
+
+  .class-meta {
+    font-size: 0.65rem;
+  }
+
+  .schedule-header h2 {
+    font-size: 0.95rem;
+  }
+
+  .timetable-head {
+    font-size: 0.8rem;
+  }
+
+  .time-cell {
+    font-size: 0.8rem;
+  }
+  .btn-primary {
+    font-size: 0.9rem;
+    padding: 8px 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 1.6rem;
+  }
+  h2 {
+    font-size: 1.2rem;
+  }
+  h3 {
+    font-size: 1.1rem;
+  }
+  h4 {
+    font-size: 0.95rem;
+  }
+  h5 {
+    font-size: 0.9rem;
+  }
+  h6 {
+    font-size: 0.85rem;
+  }
+
+  body {
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  p {
+    font-size: 13px;
+  }
+
+  .muted {
+    font-size: 0.75rem;
+  }
+
+  span, label {
+    font-size: 0.8rem;
+  }
+
+  .topbar-inner h1 {
+    font-size: 0.8rem;
+  }
+
+  .sidebar a {
+    font-size: 0.9rem;
+  }
+
+  .card {
+    padding: 16px;
+  }
+
+  .card small {
+    font-size: 0.7rem;
+  }
+
+  .card strong {
+    font-size: .825rem;
+  }
+
+  .card h5 {
+    font-size: 0.875rem;
+  }
+  
+  .card #todayScheduleContent p {
+    font-size: 0.8rem;
+  }
+
+  .card a {
+    font-size: 0.75rem;
+  }
+
+  .studentTable thead th {
+    font-size: 0.8rem;
+  }
+
+  .studentTable tbody td {
+    font-size: 0.775rem;
+  }
+
+
+  .studentName {
+    font-size: 0.85rem;
+  }
+
+  .smallMuted {
+    font-size: 0.65rem;
+  }
+
+  .action-card {
+    padding: 12px;
+  }
+
+  .action-body h4 {
+    font-size: 0.9rem;
+  }
+
+  .action-body p {
+    font-size: 0.75rem;
+  }
+
+  .action-body .action-title {
+    font-size: 0.9rem;
+  }
+
+  .action-body .action-sub {
+    font-size: 0.75rem;
+  }
+
+  .class-title {
+    font-size: 0.85rem;
+  }
+
+  .class-sub {
+    font-size: 0.7rem;
+  }
+
+  .class-meta {
+    font-size: 0.6rem;
+  }
+
+  .schedule-header h2 {
+    font-size: 0.9rem;
+  }
+
+  .nav-btn {
+    font-size: 0.8rem;
+  }
+
+  .timetable-head {
+    font-size: 0.75rem;
+  }
+
+  .timetable-grid {
+    font-size: 0.8rem;
+  }
+
+  .time-cell {
+    font-size: 0.75rem;
+  }
+
+  .pill {
+    font-size: 0.75rem;
+  }
+
+  .mode {
+    font-size: 0.85rem;
+  }
+
+  .btn-primary {
+    font-size: 0.85rem;
+    padding: 8px 10px;
+  }
+}
+
+@media (max-width: 600px) {
+  h1 {
+    font-size: 1.4rem;
+  }
+  h2 {
+    font-size: 1.1rem;
+  }
+  h3 {
+    font-size: 1rem;
+  }
+  h4 {
+    font-size: 0.9rem;
+  }
+  h5 {
+    font-size: 0.85rem;
+  }
+  h6 {
+    font-size: 0.8rem;
+  }
+
+  body {
+    font-size: 12px;
+    line-height: 1.4;
+  }
+
+  p {
+    font-size: 12px;
+  }
+
+  .muted {
+    font-size: 0.7rem;
+  }
+
+  span, label {
+    font-size: 0.75rem;
+  }
+
+  .topbar-inner h1 {
+    font-size: 0.75rem;
+  }
+
+  .sidebar a {
+    font-size: 0.85rem;
+  }
+
+  .card {
+    padding: 14px;
+  }
+
+  .card small {
+    font-size: 0.675rem;
+  }
+
+  .card strong {
+    font-size: .8rem;
+  }
+  
+  .card h5 {
+    font-size: 0.85rem;
+  }
+
+  .card #todayScheduleContent p {
+    font-size: 0.8rem;
+  }
+
+  .card a {
+    font-size: 0.725rem;
+  }
+
+  .studentTable thead th {
+    font-size: 0.775rem;
+  }
+
+  .studentTable tbody td {
+    padding: 6px 8px;
+    font-size: 0.75rem;
+  }
+
+  .studentName {
+    font-size: 0.8rem;
+  }
+
+  .smallMuted {
+    font-size: 0.6rem;
+  }
+
+  .action-card {
+    padding: 10px;
+  }
+
+  .action-body h4 {
+    font-size: 0.85rem;
+  }
+
+  .action-body p {
+    font-size: 0.7rem;
+  }
+
+  .action-body .action-title {
+    font-size: 0.85rem;
+  }
+
+  .action-body .action-sub {
+    font-size: 0.7rem;
+  }
+
+  .class-title {
+    font-size: 0.8rem;
+  }
+
+  .class-sub {
+    font-size: 0.65rem;
+  }
+
+  .class-meta {
+    font-size: 0.55rem;
+  }
+
+  .schedule-header h2 {
+    font-size: 0.85rem;
+  }
+
+  .nav-btn {
+    font-size: 0.75rem;
+  }
+
+  .timetable-head {
+    font-size: 0.65rem;
+  }
+
+  .timetable-grid {
+    font-size: 0.75rem;
+  }
+
+  .time-cell {
+    font-size: 0.7rem;
+  }
+
+  .pill {
+    font-size: 0.7rem;
+  }
+
+  .mode {
+    font-size: 0.8rem;
+  }
+
+  .welcome-card h4 {
+    font-size: 0.95rem;
+  }
+
+  .welcome-card p {
+    font-size: 0.75rem;
+  }
+
+  .time-head {
+    font-size: 0.65rem;
+  }
+  .btn-primary {
+    font-size: 0.8rem;
+    padding: 8px 10px;
+  }
+}
+
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.2rem;
+  }
+  h2 {
+    font-size: 1rem;
+  }
+  h3 {
+    font-size: 0.95rem;
+  }
+  h4 {
+    font-size: 0.85rem;
+  }
+  h5 {
+    font-size: 0.8rem;
+  }
+  h6 {
+    font-size: 0.75rem;
+  }
+
+  body {
+    font-size: 11px;
+    line-height: 1.4;
+  }
+
+  p {
+    font-size: 11px;
+  }
+
+  .muted {
+    font-size: 0.65rem;
+  }
+
+  span, label {
+    font-size: 0.7rem;
+  }
+
+  input, select, button {
+    font-size: 12px;
+  }
+
+  .topbar-inner h1 {
+    font-size: 0.7rem;
+  }
+
+  .sidebar a {
+    font-size: 0.8rem;
+  }
+
+  .card {
+    padding: 12px;
+  }
+
+  .card small {
+    font-size: 0.65rem;
+  }
+
+  .card strong {
+    font-size: 0.775rem;
+  }
+
+  .card h5 {
+    font-size: 0.85rem;
+  }
+
+  .card div p {
+    font-size: 0.775rem;
+  }
+
+  .card a {
+    font-size: 0.725rem;
+  }
+
+  .studentTable thead th {
+    font-size: 0.75rem;
+  }
+
+  .studentTable tbody td {
+    padding: 4px 6px;
+    font-size: 0.725rem;
+  }
+
+  .studentName {
+    font-size: 0.75rem;
+  }
+
+  .smallMuted {
+    font-size: 0.55rem;
+  }
+
+  .action-card {
+    padding: 8px;
+  }
+
+  .action-body h4 {
+    font-size: 0.8rem;
+  }
+
+  .action-body p {
+    font-size: 0.65rem;
+  }
+
+  .action-body .action-title {
+    font-size: 0.8rem;
+  }
+
+  .action-body .action-sub {
+    font-size: 0.65rem;
+  }
+
+  .class-title {
+    font-size: 0.75rem;
+  }
+
+  .class-sub {
+    font-size: 0.6rem;
+  }
+
+  .class-meta {
+    font-size: 0.5rem;
+  }
+
+  .schedule-header h2 {
+    font-size: 0.8rem;
+  }
+
+  .nav-btn {
+    font-size: 0.7rem;
+  }
+
+  .timetable-head {
+    font-size: 0.65rem;
+  }
+
+  .timetable-grid {
+    font-size: 0.7rem;
+  }
+
+  .time-cell {
+    font-size: 0.65rem;
+  }
+
+  .time-head {
+    font-size: 0.6rem;
+  }
+
+  .pill {
+    font-size: 0.65rem;
+  }
+
+  .mode {
+    font-size: 0.75rem;
+  }
+
+  .welcome-card h4 {
+    font-size: 0.9rem;
+  }
+
+  .welcome-card p {
+    font-size: 0.7rem;
+  }
+
+  .drawer-nav-item {
+    font-size: 0.8rem;
+  }
+
+  .export-btn {
+    font-size: 0.8rem;
+  }
+
+  .save {
+    font-size: 0.8rem;
+  }
+
+  .btn-primary {
+    font-size: 0.7rem;
+    padding: 8px 10px;
+  }
+
+  .btn-cancel {
+    font-size: 0.7rem;
+    padding: 8px 12px;
+  }
+}
+
+@media (max-width: 360px) {
+  h1 {
+    font-size: 1rem;
+  }
+  h2 {
+    font-size: 0.95rem;
+  }
+  h3 {
+    font-size: 0.9rem;
+  }
+  h4 {
+    font-size: 0.8rem;
+  }
+  h5 {
+    font-size: 0.75rem;
+  }
+  h6 {
+    font-size: 0.7rem;
+  }
+
+  body {
+    font-size: 10px;
+    line-height: 1.3;
+  }
+
+  p {
+    font-size: 10px;
+  }
+
+  .muted {
+    font-size: 0.6rem;
+  }
+
+  span, label {
+    font-size: 0.65rem;
+  }
+
+  input, select, button {
+    font-size: 11px;
+    padding: 8px;
+  }
+
+  .sidebar a {
+    font-size: 0.75rem;
+  }
+
+  .card {
+    padding: 10px;
+  }
+
+  .card small {
+    font-size: 0.5rem;
+  }
+
+  .card strong {
+    font-size: 0.75rem;
+  }
+
+  .card h5 {
+    font-size: 0.8rem;
+  }
+
+  .card div p {
+    font-size: 0.725rem;
+  }
+
+  .card a {
+    font-size: 0.675rem;
+  }
+
+  .studentTable thead th {
+    font-size: 0.7rem;
+  }
+
+  .studentTable tbody td {
+    padding: 3px 4px;
+    font-size: 0.65rem;
+  }
+
+  .studentName {
+    font-size: 0.7rem;
+  }
+
+  .smallMuted {
+    font-size: 0.5rem;
+  }
+
+  .action-card {
+    padding: 6px;
+  }
+
+  .action-body h4 {
+    font-size: 0.75rem;
+  }
+
+  .action-body p {
+    font-size: 0.6rem;
+  }
+
+  .class-title {
+    font-size: 0.7rem;
+  }
+
+  .class-sub {
+    font-size: 0.55rem;
+    display: none;
+  }
+
+  .class-meta {
+    font-size: 0.5rem;
+    display: none;
+  }
+
+  .schedule-header h2 {
+    font-size: 0.75rem;
+  }
+
+  .nav-btn {
+    font-size: 0.65rem;
+  }
+
+  .timetable-head {
+    font-size: 0.65rem;
+  }
+
+  .timetable-grid {
+    font-size: 0.65rem;
+  }
+
+  .time-cell {
+    font-size: 0.6rem;
+  }
+
+  .time-head {
+    font-size: 0.55rem;
+  }
+
+  .pill {
+    font-size: 0.6rem;
+  }
+
+  .mode {
+    font-size: 0.7rem;
+  }
+
+  .welcome-card h4 {
+    font-size: 0.85rem;
+  }
+
+  .welcome-card p {
+    font-size: 0.65rem;
+  }
+
+  .export-btn {
+    font-size: 0.75rem;
+  }
+
+  .save {
+    font-size: 0.75rem;
+  }
+
+  .btn-primary {
+    font-size: 0.65rem;
+    padding: 6px 10px;
+  }
+
+  .btn-cancel {
+    font-size: 0.65rem;
+    padding: 6px 10px;
+  }
+
+  .drawer-nav-item {
+    font-size: 0.65rem;
+  }
+}
